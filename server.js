@@ -13,8 +13,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
 
 //Cashfree Route
-const cashfreeRoute = require('./routes/cashfree/cashfreeRoute')
-app.use("/api", cashfreeRoute);
+const hostedroute = require('./routes/stripe/hostedroute')
+const embeddedroute = require('./routes/stripe/embedded')
+app.use("/hosted", hostedroute);
+app.use("/embedded", embeddedroute);
 
 // Starting Server
 app.listen(port, () => {
